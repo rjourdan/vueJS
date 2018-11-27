@@ -1,1 +1,1 @@
-# vueJS
+# vueJS training on Udemy
