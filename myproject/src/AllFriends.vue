@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         unfriend(name){
-            //vjkjvf
+            //emit an event "delete" send up to the parent component
             this.$emit('delete',{name})
         }
     }
