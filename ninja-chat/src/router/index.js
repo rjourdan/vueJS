@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Welcome from '@/components/Welcome'
+import Chat from '@/components/Chat'
 
 Vue.use(Router)
 
@@ -8,8 +9,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Welcome',
+      component: Welcome
+    },
+    {
+      path: '/chat',
+      name: 'Chat',
+      component: Chat,
+      props: true,
+      //route gard to prevent one to go directly to the chat window without setting up a name
+      beforeEnter: (to, from, next) => {
+          if(to.params.name){
+            next()
+          } else {
+            next({ name: 'Welcome'})
+          }
+          
+
+      }
     }
   ]
 })
