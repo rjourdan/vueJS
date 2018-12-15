@@ -18,6 +18,7 @@
 
 <script>
 import NewMessage from '@/components/NewMessage'
+import { db,auth } from '@/firebase/init'
 
 export default {
     name: 'Chat',
@@ -29,6 +30,14 @@ export default {
         return {
 
         }
+    },
+    created(){
+       
+        let ref = db.collection('messages')
+     //whenever there is a change in the db we will trigger an action
+        ref.onSnapShot(snapshot =>{ 
+            console.log(snapshot.docChanges())
+        })
     }
 }
 </script>
